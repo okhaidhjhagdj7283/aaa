@@ -1,0 +1,13 @@
+[package]
+name = "DeadDrop"
+version = "1.0.0"
+authors = []
+
+[addresses]
+dead_drop = "0x6773b09a96b007eb6fb16214ab838a0b36510e09fc3cdc64c807345f55185bb5"
+
+[dependencies]
+AptosFramework = { local = "/root/aptos-core/aptos-move/framework/aptos-framework" }
+AptosStdlib = { local = "/root/aptos-core/aptos-move/framework/aptos-stdlib" }
+
+[dev-dependencies]
