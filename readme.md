@@ -88,3 +88,29 @@ struct Drop has store, drop {
     reads_remaining: u64,
     is_active: bool,
 }
+
+
+Các hàm chính
+
+Hàm	Mô tả
+register_drop	Tạo drop mới
+record_read	Ghi nhận lượt đọc, giảm quota
+destroy_drop	Hủy drop thủ công
+get_drop_status	Xem trạng thái (view function)
+get_blob_hash	Lấy hash để xác minh (view function)
+Events
+
+Event	Mô tả
+DropCreatedEvent	Phát sinh khi tạo drop
+DropReadEvent	Phát sinh mỗi lần đọc (bằng chứng giao nhận)
+DropDestroyedEvent	Phát sinh khi drop tự hủy
+Bảo mật
+
+Mối đe dọa	Cách xử lý
+Key bị chặn	Key chỉ nằm trong URL fragment, không gửi lên server
+Server đọc plaintext	Server chỉ lưu bản mã, không có key
+File bị sửa đổi	Hash SHA-256 lưu trên blockchain, verify trước khi giải mã
+Tấn công replay	Hệ thống quota + ghi nhận trên blockchain
+Truy cập trái phép	Xác thực bằng ví Aptos khi tạo drop
+Dữ liệu tồn tại vĩnh viễn	Tự động xóa khỏi storage khi hết quota hoặc TTL
+
